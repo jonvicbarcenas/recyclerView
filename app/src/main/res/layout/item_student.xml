@@ -11,12 +11,14 @@
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/luffy"
         android:contentDescription="@string/student_photo"/>
 
     <TextView
         android:id="@+id/student_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Eren Yeager"
         app:layout_constraintStart_toEndOf="@id/student_photo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

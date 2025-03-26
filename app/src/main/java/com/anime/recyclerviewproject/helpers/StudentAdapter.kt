@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.anime.recyclerviewproject.R
 import com.anime.recyclerviewproject.data.Student
 
-class StudentAdapter(private val students: List<Student>) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
+class StudentAdapter(
+    private val students: List<Student>,
+    private val onClick : (Student) -> Unit,
+    private val onLongClick : (Student) -> Unit
+) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
     class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val photo: ImageView = itemView.findViewById(R.id.student_photo)
@@ -25,6 +29,15 @@ class StudentAdapter(private val students: List<Student>) : RecyclerView.Adapter
         val student = students[position]
         holder.photo.setImageResource(student.photoRes)
         holder.name.text = "${student.firstName} ${student.middleName} ${student.lastName}"
+
+        holder.itemView.setOnClickListener {
+            onClick(student)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            onLongClick(student)
+            true
+        }
     }
 
     override fun getItemCount(): Int = students.size
